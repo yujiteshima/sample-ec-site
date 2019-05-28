@@ -43,7 +43,16 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+    'nuxt-fontawesome'
   ],
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+    ]
+  },
   /*
   ** Axios module configuration
   */

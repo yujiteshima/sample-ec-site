@@ -30,7 +30,8 @@
           b-nav-item about
           b-nav-item login
           b-nav-item cart
-
+      font-awesome-icon(icon="home")
+      
 
 
 

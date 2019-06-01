@@ -1,5 +1,8 @@
 # Nuxt Projectの立ち上げ
 
+
+
+
 ```
 $ npx create-nuxt-app sample-ec-site
 ```
@@ -178,4 +181,78 @@ export default {
 このケースだと、posts/fetchPostByでこのアクションを呼び出すことができる。
 ただし、同じpostsモジュール内の場合だとfetchPostByで呼び出すことが可能。
 
+## sass導入
+```
+$ npm install node-sass sass-loader style-loader
+```
+
+## b-img使えない事に対する処置
+
+「こちらにテキストをこちらに画像を貼って２カラムのレイアウト作るぞ。」
+
+```pug
+b-container.hoge-container
+  b-row(align-v="center").hoge-contents
+    b-col(md="6")
+      p hogehoge
+    b-col(md="6")
+      b-img(fluid src="../static/images/hoge.jpg" alt="hoge")
+```
+
+上手くいきません。またタイポか〜。。
+
+ググります。公式にありました。
+> https://bootstrap-vue.js.org/docs/reference/images/
+
+大体の内容は、vue-loaderは```<img>```タグのsrc属性のに相対パスを書いても自動的に変換するけど、BootstrapVueカスタムコンポーネントの場合は自動的には変換しませんよ。
+
+不親切です。
+```b-img```何て特別な書き方してて、ただでも初級者には、bootstrapやっとうろ覚えてきたに、また方言〜というところなのに、デフォルトでは使えないから、よろしくねなんて。。。
+
+気をとり直して読んでいくと、Vue-Loaderのoption設定で```b-img```とか```b-card```とかに相対URLが結びつくように設定してよとVue-CLI3とNuxtでの設定方法が書いてありした。
+
+```js
+module.exports = {
+  build: {
+    extend(config, ctx) {
+      const vueLoader = config.module.rules.find(rule => rule.loader === 'vue-loader')
+      vueLoader.options.transformAssetUrls = {
+        video: ['src', 'poster'],
+        source: 'src',
+        img: 'src',
+        image: 'xlink:href',
+        'b-img': 'src',
+        'b-img-lazy': ['src', 'blank-src'],
+        'b-card': 'img-src',
+        'b-card-img': 'img-src',
+        'b-card-img-lazy': ['src', 'blank-src'],
+        'b-carousel-slide': 'img-src',
+        'b-embed': 'src'
+      }
+    }
+  }
+}
+```
+
+これで画像が表示されました。
+
+またrequire使っても出来るようです。
+
+
+```pug
+b-img(:src="require('../static/hoge.jpg')")
+
+b-card-img(:img-src="require('../static/picture.jpg')"
+```
+
+### まとめ
+デフォルトで当たり前のよう出来そうで出来ない。
+webpackの周りの復習が出来たし、Nuxt、vue-loaderの公式の今まで読んでなかったページをまじまじと読めたのでよしとします。
+
+### 該当箇所のソースです。
+
+----
+Nuxt　=>  https://ja.nuxtjs.org/api/configuration-build/
+bootstrap-vue =>  https://bootstrap-vue.js.org/docs/reference/images/
+vue-loader => https://vue-loader.vuejs.org/options.html#transformasseturls
 

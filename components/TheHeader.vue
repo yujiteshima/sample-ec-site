@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container.header-container
+b-container(fluid).header-container
   b-row.site-header
     b-col.nav-wrapper.d-none.d-md-block(md="10" offset-md="1")
       b-nav(align="center")
@@ -49,6 +49,7 @@ export default {
     background-color:rgba(0,0,0,0.5);
     width:100%;
     position: fixed;
+    
       
     .nav-wrapper{
           width: 80%;

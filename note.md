@@ -256,3 +256,14 @@ Nuxt　=>  https://ja.nuxtjs.org/api/configuration-build/
 bootstrap-vue =>  https://bootstrap-vue.js.org/docs/reference/images/
 vue-loader => https://vue-loader.vuejs.org/options.html#transformasseturls
 
+Product.create(name:"",price:100,genre:"fruits",stocks:100,comments:"春の新作です。",count:1)
+
+## DB設計
+### Product Table
+id
+name
+price
+genre: "期間限定","にぎり", "軍艦・巻物","海鮮丼"
+comments
+count:1
+filename:string

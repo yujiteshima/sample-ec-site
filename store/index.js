@@ -1,15 +1,20 @@
-import Vuex from 'vuex'
-import productsModule from './products'
-import usersModule from './users'
-import cartsModule from './carts'
-import uiModule from './ui'
-
-
-new Vuex.Store({
-  modules: {
-    products: productsModule,
-    users: usersModule,
-    carts: cartsModule,
-    ui: uiModule,
-  }
+export const state = () => ({
+  isLoggedIn: false,
+  user: null
 })
+export const getters = {
+  isLoggedIn: (state) => state.isLoggedIn,
+  user: (state) => state.user
+}
+export const mutations = {
+  setUser(state, {
+    user
+  }) {
+    state.user = user
+    state.isLoggedIn = true
+  }
+}
+
+export const actions = {
+
+}

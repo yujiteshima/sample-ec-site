@@ -80,7 +80,7 @@ export default {
   background-image: url("../static/images/washi-pakutaso.jpg");
   background-size: cover;
   height: 75vh;
-  padding-top: 3.5rem;
+  padding-top: 4.25rem;
 }
 .top-contents {
   .top-img {

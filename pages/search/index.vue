@@ -20,15 +20,18 @@
             p name: {{product.name}}
             p price: {{product.price}}
             p count: {{product.count}}
-          b-button.d-flex.justify-content-center(href='#' variant="primary") カートに入れる
+          b-button.d-flex.justify-content-center(v-on:click="addCart(product.id)" variant="primary") カートに入れる
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   computed: {
     ...mapState("product", ["products"])
     //...mapGetters("product", ["products"])
+  },
+  methods: {
+    ...mapActions("cart", ["addCart"])
   }
   // async asyncData({ route, app }) {
   //   const products = await app.$axios.$get(
@@ -118,7 +121,7 @@ export default {
 }
 
 .page-container {
-  padding-top: 3.5rem;
+  padding-top: 4.25rem;
   h2 {
     font-family: "Myfont";
   }

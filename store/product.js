@@ -16,7 +16,7 @@ export const actions = {
   async all({
     commit
   }) {
-    const products = await this.$axios.$get(`http://localhost:3030/api/v1/searches`)
+    const products = await this.$axios.$get(`https://sample-ec-site-api.herokuapp.com/api/v1/searches`)
     commit('setProducts', {
       products
     })

@@ -123,7 +123,7 @@ export default {
     @include hov-item;
   }
   .new-img2 {
-    background-image: url("../static/images/sinsku2-ashimashinari.jpg");
+    background-image: url("../static/images/sinsaku2-ashinari.jpg");
     background-size: cover;
     @include hov-item;
   }

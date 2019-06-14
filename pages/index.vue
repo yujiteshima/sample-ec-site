@@ -17,7 +17,7 @@
               br
               | &emsp; &emsp; 御品書一覧
         b-col(sm="7").bg-sendary.about-img box2
-    b-container.new-countainer.mt-3
+    b-container.new-countainer.mt-1
       b-row.new-contents
         b-col(sm="4").new-text-bg.d-flex.align-items-center.justify-content-center.tate.display-4
           p
@@ -127,7 +127,7 @@ export default {
     @include hov-item;
   }
   .new-img2 {
-    background-image: url("../static/images/sinsku2-ashimashinari.jpg");
+    background-image: url("../static/images/sinsaku2-ashinari.jpg");
     background-size: cover;
     @include hov-item;
   }

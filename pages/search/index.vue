@@ -3,6 +3,11 @@
     b-row.page-title-contents
       b-col
         h2.text-center.display-4.py-3 お品書き
+    b-row
+      b-col(cols="3" @click="nigiri").text-center 握寿司
+      b-col(cols="3" @click="kaisen").text-center 海鮮丼
+      b-col(cols="3" @click="siru").text-center 汁物
+      b-col(cols="3" @click="sousaku").text-center 創作寿司・新作
     b-row.item-contents
       b-col(sm="3" v-for="product in products" v-bind:key="product.id")
         b-card(
@@ -27,11 +32,16 @@
 import { mapState, mapActions } from "vuex";
 export default {
   computed: {
-    ...mapState("product", ["products"])
+    ...mapState("product", ["products"]),
+    ...mapState("user", ["isLogin"])
     //...mapGetters("product", ["products"])
   },
   methods: {
-    ...mapActions("cart", ["addCart"])
+    ...mapActions("cart", ["addCart"]),
+    ...mapActions("product", ["nigiri", "kaisen", "siru", "sousaku", "select"])
+  },
+  mounted() {
+    console.log(this.isLogin);
   }
   // async asyncData({ route, app }) {
   //   const products = await app.$axios.$get(

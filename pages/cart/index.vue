@@ -30,6 +30,10 @@
       b-col(cols="7")
       b-col(cols="3").text-right 合計:
       b-col(cols="2") {{ sum }} 円
+    b-row.mb-4
+      b-col(cols="12").text-center
+        nuxt-link(to="/cart/finalcheck")
+          b-button(size="lg" variant="primary") レジに進む
 </template>
 
 <script>
@@ -45,42 +49,20 @@ export default {
       }
       return sum;
     },
-    ...mapState("cart", ["items"])
+    ...mapState("cart", ["items"]),
+    ...mapState("user", ["isLogin"])
   },
   methods: {
     ...mapActions("cart", ["increment", "decrement", "itemDel"])
-    // increment(id) {
-    //   console.log("increment!!!!!!!!!!!!!!!!!!!!");
-    // },
-    // decrement(id) {
-    //   console.log("decremetn!!!!!!!!!!!!!!!!!!!!!");
-    // }
-    //...mapAction("cart", ["increment", "decremet"])
-    // increment(id) {
-    //   let item = this.items.find(cart => {
-    //     return cart.id === id;
-    //   });
-    //   this.$store.cart.dispatch("increment", id);
-    // },
-    // decriment(id) {
-    //   let item = this.items.find(cart => {
-    //     return cart.id === id;
-    //   });
-    //   this.$store.cart.dispatch("decrement", id);
-    // }
+  },
+  mounted() {
+    if (this.isLogin) {
+      console.log("welcome cart page");
+    } else {
+      console.log("redirect auth page");
+      this.$router.push("/auth");
+    }
   }
-  // data() {
-  //   return {
-  //     items: [
-  //       {
-  //         id: 1,
-  //         name: "鮪",
-  //         filename: "maguro1-ac.jpg",
-  //         price: 180,
-  //         count: 1
-  //       }
-  //     ]
-  //   };
 };
 </script>
 

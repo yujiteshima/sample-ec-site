@@ -1,18 +1,16 @@
 <template lang="pug">
   div.site-header-wrapper.site-header
     b-navbar(toggleable="lg" type="dark" fixed="top")
-      b-navbar-brand 出前寿司
+      b-navbar-brand
+        nuxt-link(to="/") 出前寿司
       b-navbar-toggle(target="nav-collapse")
       b-collapse(is-nav)#nav-collapse
-        
         b-nav-form
             b-form-select(v-model="selected" :options="options" size="sm").select-form
             b-form-input(size="sm" placeholder="Search")
             b-button(size='sm' placeholder="Search") Search
         b-navbar-nav.ml-auto
           b-navbar-nav
-            b-nav-item
-              nuxt-link(to="/") Top
             b-nav-item(v-if="!isLogin")
               nuxt-link(to="/auth") Login/新規登録
             b-nav-item(v-if="isLogin")
@@ -60,6 +58,7 @@ export default {
     }
   }
 }
+
 .fixed-top {
   background-color: rgba(0, 0, 0, 0.5);
 }

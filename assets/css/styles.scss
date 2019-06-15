@@ -2,3 +2,13 @@
   font-family: 'MyFont';
   src: url('../font/Pigmo-01.otf') format("opentype");
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .5s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}

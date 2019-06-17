@@ -105,6 +105,7 @@ export default {
 <style scoped>
 .container {
   padding: 100px;
+  min-height: 93vh;
 }
 .pass, .email {
   color: tomato;

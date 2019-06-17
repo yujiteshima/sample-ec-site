@@ -36,13 +36,13 @@
       b-col(cols="2") {{ sum }} 円
     b-row.mb-4
       b-col(cols="12").text-center
-        nuxt-link(to="/cart/thanks")
+        div(@click="finalCheck")
           b-button(size="lg" variant="danger") ご注文確定
       b-col(cols="12").text-center.mt-4
         nuxt-link(to="/cart")
           b-button(size="lg" variant="primary") カートページに戻る
 </template>
-
+　
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
@@ -60,7 +60,13 @@ export default {
     ...mapState("user", ["isLogin", "emailAddress"])
   },
   methods: {
-    ...mapActions("cart", ["increment", "decrement", "itemDel"])
+    ...mapActions("cart", ["increment", "decrement", "itemDel", "thanks"]),
+    finalCheck() {
+      if (confirm("ご注文を確定致しますか？")) {
+        this.$store.dispatch("cart/thanks");
+        this.$router.push("/cart/thanks");
+      }
+    }
   },
   mounted() {
     if (this.isLogin) {
@@ -77,6 +83,7 @@ export default {
 .page-container {
   padding-top: 4.25rem;
   font-family: "Myfont";
+  min-height: 93vh;
 }
 .cart-item-hedding {
   height: 5vh;

@@ -98,5 +98,10 @@ export const actions = {
     //   return cart.id === id;
     // })
     commit('delete', id)
+  },
+  thanks({
+    commit
+  }) {
+    commit('thanks')
   }
 }

@@ -2,13 +2,13 @@
   b-container.page-container
     b-row.page-title-contents
       b-col
-        h2.text-center.display.py-3 買物籠
+        h2.text-center.py-3 買物籠
     b-row.cart-item-hedding(align-v="center")
       b-col(cols="1").text-center 削除
       b-col(cols="3").text-center 写真
       b-col(cols="2").text-center 品名
       b-col(cols="1").text-center 価格
-      b-col(cols="3").text-center 個数
+      b-col(cols="2").text-center 個数
       b-col(cols="2").text-center 小計
     b-row.cart-item(v-for="item in items" v-bind:key="item.id" align-v="center")
       b-col(cols="1").text-center
@@ -18,11 +18,11 @@
         b-img.item-img(:src="'/images/' + item.filename" rounded)
       b-col(cols="2").text-center {{item.name}}
       b-col(cols="1").text-center {{item.price}} 円
-      b-col(cols="3").text-center
-        span.command(@click="decrement(item.id)").p-2
+      b-col(cols="2").text-center
+        span.command(@click="decrement(item.id)").p-3
           font-awesome-icon(icon="minus")
         span {{item.count}}
-        span.command(@click="increment(item.id)").p-2
+        span.command(@click="increment(item.id)").p-3
           font-awesome-icon(icon="plus")
       b-col(cols="2").text-center {{item.price*item.count}} 円
     b-row.price-boad
@@ -70,12 +70,20 @@ export default {
 .page-container {
   padding-top: 4.25rem;
   font-family: "Myfont";
+  min-height: 93vh;
+  .page-title-contents {
+    h2 {
+      font-size: 4vw;
+    }
+  }
 }
 .cart-item-hedding {
   height: 5vh;
+  font-size: 1.5vw;
 }
 .cart-item {
   height: 20vh;
+  font-size: 1.5vw;
   .item-img {
     height: 100%;
     width: 100%;
@@ -84,7 +92,12 @@ export default {
 .command {
   &:hover {
     color: red;
+    font-size: 2vw;
   }
+}
+
+.price-boad {
+  font-size: 2.5vw;
 }
 </style>
 

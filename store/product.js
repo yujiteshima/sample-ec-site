@@ -52,8 +52,8 @@ export const actions = {
       displayItem: 9,
       current: 1,
     }
-    //let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
-    let url = "http://localhost:3030/api/v1/searches"
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
     let json = fetch(url, {
       mode: 'cors',
       headers: {
@@ -83,8 +83,8 @@ export const actions = {
       displayItem: 9,
       current: 1,
     }
-    //let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
-    let url = "http://localhost:3030/api/v1/searches"
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
     let json = fetch(url, {
       mode: 'cors',
       headers: {
@@ -114,8 +114,8 @@ export const actions = {
       displayItem: 9,
       current: 1,
     }
-    //let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
-    let url = "http://localhost:3030/api/v1/searches"
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
     let json = fetch(url, {
       mode: 'cors',
       headers: {
@@ -145,8 +145,8 @@ export const actions = {
       displayItem: 9,
       current: 1,
     }
-    //let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
-    let url = "http://localhost:3030/api/v1/searches"
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
     let json = fetch(url, {
       mode: 'cors',
       headers: {
@@ -176,8 +176,77 @@ export const actions = {
       displayItem: 9,
       current: 1,
     }
-    //let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
-    let url = "http://localhost:3030/api/v1/searches"
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
+    let json = fetch(url, {
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      method: 'POST',
+      body: JSON.stringify(searchInfo)
+    })
+    Promise.resolve(json)
+      .then(result => {
+        return result.json();
+      })
+      .then(response => {
+        commit('setProducts', response)
+        // console.log(response);
+        // this.$store.state.products = response;
+      })
+      .catch(error => console.log(error));
+  },
+  selected({
+    commit
+  }, searchIf) {
+    console.log(
+      "@product.selected!!!!!!!!!!"
+    )
+    let searchInfo = {
+      mode: "select",
+      displayItem: 9,
+      current: 1,
+      select: searchIf.select,
+      keyword: searchIf.keyword
+    }
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
+    let json = fetch(url, {
+      mode: "cors",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      method: 'POST',
+      body: JSON.stringify(searchInfo)
+    })
+    Promise.resolve(json)
+      .then(result => {
+        return result.json();
+      })
+      .then(response => {
+        commit('setProducts', response)
+      })
+      .catch(error => console.log(error));
+
+  },
+  paging({
+    state,
+    commit
+  }, page) {
+    let searchInfo = {
+      mode: state.mode,
+      displayItem: state.displayItem,
+      current: page,
+      select: state.select,
+      keyword: state.keyword
+    }
+    let url = "https://sample-ec-site-api.herokuapp.com/api/v1/searches"
+    //let url = "http://localhost:3030/api/v1/searches"
     let json = fetch(url, {
       mode: 'cors',
       headers: {

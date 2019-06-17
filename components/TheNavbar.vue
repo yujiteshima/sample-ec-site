@@ -7,8 +7,8 @@
       b-collapse(is-nav)#nav-collapse
         b-nav-form
             b-form-select(v-model="selected" :options="options" size="sm").select-form
-            b-form-input(size="sm" placeholder="Search")
-            b-button(size='sm' placeholder="Search") Search
+            b-form-input(size="sm" placeholder="Search" v-model="keyword")
+            b-button(size='sm' placeholder="Search" @click="search") Search
         b-navbar-nav.ml-auto
           b-navbar-nav
             b-nav-item(v-if="!isLogin")
@@ -21,16 +21,18 @@
 
       </template>
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       selected: null,
+      keyword: "",
       options: [
         { value: null, text: "全ての商品" },
         { value: "nigiri", text: "握り" },
-        { value: "don", text: "海鮮丼" },
-        { value: "makimono", text: "巻物" },
-        { value: "siru", text: "汁物" }
+        { value: "kaisen", text: "海鮮丼" },
+        { value: "siru", text: "汁物" },
+        { value: "sousaku", text: "創作寿司・新作" }
       ]
     };
   },
@@ -38,6 +40,16 @@ export default {
     isLogin() {
       return this.$store.state.user.isLogin;
     }
+  },
+  methods: {
+    search() {
+      this.$store.dispatch("product/selected", {
+        select: this.selected,
+        keyword: this.keyword
+      });
+      this.$router.push("/search");
+    }
+    //...mapActions("product", ["selected"])
   }
 };
 </script>

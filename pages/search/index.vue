@@ -3,13 +3,19 @@
     b-row.page-title-contents
       b-col
         h2.text-center.display-4.py-3 お品書き
-    b-row
-      b-col(cols="3" @click="nigiri").text-center 握寿司
-      b-col(cols="3" @click="kaisen").text-center 海鮮丼
-      b-col(cols="3" @click="siru").text-center 汁物
-      b-col(cols="3" @click="sousaku").text-center 創作寿司・新作
+    b-row(align-h="center").select-menu.mb-4
+      b-col(cols="2" @click="nigiri").text-center.select-text 握寿司
+      b-col(cols="2" @click="kaisen").text-center.select-text 海鮮丼
+      b-col(cols="2" @click="siru").text-center.select-text 汁物
+      b-col(cols="2" @click="sousaku").text-center.select-text 創作寿司
+    b-row(align-h="center").genre-menu.mb-4
+      b-col(cols="4").text-center
+        span(@click="all").px-2.all 全て
+        span.px-2 |
+        span.px-2 {{genre}}
+
     b-row.item-contents
-      b-col(sm="3" v-for="product in products" v-bind:key="product.id")
+      b-col(sm="4" v-for="product in products" v-bind:key="product.id")
         b-card(
           :title="product.name"
           :img-src="'/images/' + product.filename"
@@ -22,23 +28,60 @@
           class="mb-2"
         ).item-card
           b-card-text
-            p name: {{product.name}}
-            p price: {{product.price}}
-            p count: {{product.count}}
-          b-button.d-flex.justify-content-center(v-on:click="addCart(product.id)" variant="primary") カートに入れる
+            //- p name: {{product.name}}
+            p 価格　: {{product.price}} 円
+            p 個数　: {{product.count}} 個
+          b-button.d-flex.justify-content-center(v-on:click="addCart(product.id)" @click="makeToast(product.name)" variant="primary") カートに入れる
+
+          
+    PageNation
 </template>
 
 <script>
+import PageNation from "../../components/Pagenation";
 import { mapState, mapActions } from "vuex";
 export default {
+  components: {
+    PageNation
+  },
   computed: {
     ...mapState("product", ["products"]),
-    ...mapState("user", ["isLogin"])
+    ...mapState("user", ["isLogin"]),
+    genre() {
+      let genre = this.$store.state.product.mode;
+      let genre_name = "";
+      if (genre == "all") {
+        genre_name = "";
+      } else if (genre == "nigiri") {
+        genre_name = "握り";
+      } else if (genre == "kaisen") {
+        genre_name = "海鮮丼";
+      } else if (genre == "sousaku") {
+        genre_name = "創作寿司";
+      } else if (genre == "siru") {
+        genre_name = "汁物";
+      }
+      return genre_name;
+    }
     //...mapGetters("product", ["products"])
   },
   methods: {
     ...mapActions("cart", ["addCart"]),
-    ...mapActions("product", ["nigiri", "kaisen", "siru", "sousaku", "select"])
+    ...mapActions("product", [
+      "all",
+      "nigiri",
+      "kaisen",
+      "siru",
+      "sousaku",
+      "select"
+    ]),
+    makeToast(name) {
+      this.$bvToast.toast(`${name}をお買い物籠に入れました。`, {
+        title: `有難う御座います。`,
+        variant: "success",
+        solid: true
+      });
+    }
   },
   mounted() {
     console.log(this.isLogin);
@@ -131,9 +174,34 @@ export default {
 }
 
 .page-container {
+  min-height: 93vh;
   padding-top: 4.25rem;
   h2 {
     font-family: "Myfont";
+  }
+}
+
+.select-menu {
+  font-family: "Myfont";
+  font-size: 2rem;
+  .select-text {
+    &:hover {
+      color: crimson;
+      cursor: pointer;
+      // border-bottom: 3px solid skyblue;
+    }
+  }
+}
+
+.genre-menu {
+  font-family: "Myfont";
+  font-size: 2rem;
+  .all {
+    &:hover {
+      color: crimson;
+      cursor: pointer;
+      // border-bottom: 3px solid skyblue;
+    }
   }
 }
 </style>

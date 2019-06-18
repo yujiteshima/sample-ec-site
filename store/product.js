@@ -60,7 +60,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -91,7 +91,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -122,7 +122,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -153,7 +153,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -184,7 +184,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -220,7 +220,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })
@@ -253,7 +253,7 @@ export const actions = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      //credentials: 'include',
       method: 'POST',
       body: JSON.stringify(searchInfo)
     })

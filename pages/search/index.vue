@@ -18,7 +18,7 @@
       b-col(sm="4" v-for="product in products" v-bind:key="product.id")
         b-card(
           :title="product.name"
-          :img-src="'/images/' + product.filename"
+          :img-src="'images/' + product.filename"
           img-alt="Image"
           img-height="200px"
           img-width="200px"

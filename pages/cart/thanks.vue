@@ -15,7 +15,7 @@ export default {};
 .thanks-container {
   min-height: 93vh;
 
-  background-image: url("../../static/images/thanks-unsplash.jpg");
+  background-image: url("~assets/images/thanks-unsplash.jpg");
   background-size: cover;
   .thanks-text {
     font-family: "Myfont";

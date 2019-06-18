@@ -2,7 +2,7 @@
   b-container(fluid).page-container
     b-container.top-container
       b-row.top-contents
-        b-col.bg-warning.top-img.d-flex.align-items-center.justify-content-center.tate 
+        b-col.top-img.d-flex.align-items-center.justify-content-center.tate 
           span.top-text 出前寿司
           //- p.tate.display-2 極みし味をお届けします
     b-container.about-container.mt-4
@@ -78,14 +78,14 @@ export default {
   font-family: "Myfont";
 }
 .top-container {
-  background-image: url("../static/images/washi-pakutaso.jpg");
+  background-image: url("~assets/images/washi-pakutaso.jpg");
   background-size: cover;
   height: 75vh;
   padding-top: 4.25rem;
 }
 .top-contents {
   .top-img {
-    background-image: url("../static/images/sushi-top-ac.jpg");
+    background-image: url("~assets/images/sushi-top-ac.jpg");
     background-size: cover;
     .top-text {
       font-size: 8vw;
@@ -103,7 +103,7 @@ export default {
   }
   .about-text-bg {
     height: 50vh;
-    background-image: url("../static/images/take-unsplash.jpg");
+    background-image: url("~assets/images/take-unsplash.jpg");
     background-size: cover;
     @include hov-item;
     a {
@@ -114,7 +114,7 @@ export default {
 }
 .about-img {
   height: 50vh;
-  background-image: url("../static/images/sushi-about-shop-pixabay.jpg");
+  background-image: url("~assets/images/sushi-about-shop-pixabay.jpg");
   background-size: cover;
   @include hov-item;
 }
@@ -130,19 +130,19 @@ export default {
   }
   .new-text-bg {
     height: 30vh;
-    background-image: url("../static/images/washitsu1.jpg");
+    background-image: url("~assets/images/washitsu1.jpg");
     background-size: cover;
     @include hov-item;
   }
   .new-img1 {
     height: 30vh;
-    background-image: url("../static/images/sinsaku1-unsplash.jpg");
+    background-image: url("~assets/images/sinsaku1-unsplash.jpg");
     background-size: cover;
     @include hov-item;
   }
   .new-img2 {
     height: 30vh;
-    background-image: url("../static/images/sinsaku2-ashinari.jpg");
+    background-image: url("~assets/images/sinsaku2-ashinari.jpg");
     background-size: cover;
     @include hov-item;
   }
@@ -157,18 +157,18 @@ export default {
   }
   .special-text-bg {
     height: 30vh;
-    background-image: url("../static/images/washitsu2.jpg");
+    background-image: url("~assets/images/washitsu2.jpg");
     background-size: cover;
   }
   .special-img1 {
     height: 30vh;
-    background-image: url("../static/images/taidon-ac.jpg");
+    background-image: url("~assets/images/taidon-ac.jpg");
     background-size: cover;
     @include hov-item;
   }
   .special-img2 {
     height: 30vh;
-    background-image: url("../static/images/maguro-tanzaku-ac.jpg");
+    background-image: url("~assets/images/maguro-tanzaku-ac.jpg");
     background-size: cover;
     @include hov-item;
   }

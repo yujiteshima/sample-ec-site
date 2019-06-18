@@ -1,8 +1,10 @@
 <template>
   <section class="container">
     <div>
+      <h1 v-if="!isLogin" class="page-title">新規登録/ログイン</h1>
+
       <!-- 新規登録フォーム -->
-      <section v-if="!isLogin">
+      <section v-if="!isLogin" class="mt-3">
         <h5>新規登録</h5>
         <p>
           <input type="email" v-model="mailAddress" placeholder="メールアドレス" required>
@@ -33,6 +35,11 @@
         </div>
       </section>
 
+      <section v-if="!isLogin" class="mt-3">
+        Sample を見て頂けてる方へ <br>
+        Email: test@sample.com ,Pass : passpass <br>
+        でログイン出来ますので登録面倒な方はこちらを使って下さい。<br>
+      </section>
       <!-- マイページ -->
       <section v-if="isLogin">
         <h5>ログイン中です</h5>
@@ -103,6 +110,9 @@ export default {
 </script>
 
 <style scoped>
+.page-title{
+  font-size:5vw;
+}
 .container {
   padding: 100px;
   min-height: 93vh;

@@ -15,7 +15,10 @@
         span(@click="itemDel(item.id)").command
           font-awesome-icon(icon="times")
       b-col(cols="3").text-left
-        b-img.item-img(:src="'/images/' + item.filename" rounded)
+        //- b-img.item-img(:src="'require(\'' + '../../assets/images/' + item.filename + '\')'" rounded)
+        //- b-img.item-img(:src=require('"~/assets/images/"+ item.filename ') rounded)
+        //- b-img.item-img(:src="'/_nuxt/assets/images/' + item.filename ")
+        b-img.item-img(:src="'images/' + item.filename")
       b-col(cols="2").text-center {{item.name}}
       b-col(cols="1").text-center {{item.price}} 円
       b-col(cols="2").text-center
